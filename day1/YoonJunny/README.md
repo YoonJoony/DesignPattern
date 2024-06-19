@@ -95,5 +95,26 @@ public class Singleton {
 1. 이중 검사 잠금(Double-Checked Locking)
 
 ```java
+public class Singleton {
+    private static volatile Singleton instance;
 
+    private Singleton() {
+        // Private constructor to prevent instantiation
+    }
+
+    public static Singleton getInstance() {
+        if (instance == null) { // Check 1
+            synchronized (Singleton.class) {
+                if (instance == null) { // Check 2
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
 ```
+
+- 첫 번째 검사를 통해 동기화 오버헤드를 줄이고, 두 번째 검사를 통해 인스턴스가 이미 생성되었는지 다시 확인.
+- synchronized : 메서드에 붙이면 동기화 메서드가 되고 한 번에 하나의 스레드만 접근할 수 있게 됨.
+    - 다른 스레드는 현재 스레드가 작업을 완료 할 때까지 대기해야 함.
