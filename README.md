@@ -33,6 +33,14 @@ ex) 사무실에 여러 명의 사람이 프린터를 사용한다. 프린터를
 ④ 해당 인스턴스를 다른 모듈들이 공유하며 사용하기 때문에 인스턴스를 생성할 때 드는 
 비용이 줄어드는 장점이 있다.
 
+# 단점
+① 동기화(여러곳에서 동시에 접근해서 생기는 문제)가 발생할 수 있어 잘 파악하고 설계해야된다.
+② 싱글톤 객체는 객체지향적인 설계에서 문제가 발생할 수 있다.
+
+싱글톤 객체는 객체의 상태와 행위를 모두 정적(static)으로 구현하기 때문에, 객체지향적인 설계 원칙을 위반할 수 있다. 객체지향적인 설계에서는 객체의 상태와 행위를 캡슐화하여 응집도(cohesion)와 결합도(coupling)를 유지해야 한다. 테스트마다 ‘독립적인’ 인스턴스를 만들기가 어렵다. 이는 객체 지향 설계 원칙에 어긋난다.
+
+# 간단한 예제
+
 ```java
 package week01.day03.singleton01;
 
@@ -61,5 +69,34 @@ public class Singleton extends Object {
 
 }
 ```
+```java
+package week01.day03.singleton01;
+/*
+ * 작성일:2024-06-19
+ * 작성자:황석현
+ * 개요: 싱글톤 패턴 연습
+ */
+
+public class Main {
+
+	public static void main(String[] args) {
+		Singleton instance1 = Singleton.getInstance(1);
+		Singleton instance2 = Singleton.getInstance(2);
+		
+		System.out.println(instance1.hashCode());
+		System.out.println(instance2.hashCode());
+		
+		instance1.printMsg();
+		instance2.printMsg();
+		
+	}
+
+}
+```
+우선, 싱글톤은 외부에서 생성자를 차단하여 불필요한 메모리 사용을 방지한다.
+그래서 접근제어자를 public 이 아닌 private를 사용하여 new 인스턴스를 외부에서 사용할 수 없게 하였다.
 
 ![ezgif-6-abe5ed4bfe](https://github.com/smuhsh/DesignPattern/assets/49484645/017ba955-b4a0-485a-b1ab-cd26ae75a2f9)
+
+그리고 싱글톤 객체의 인스턴스값을 호출하여도 결과는 같다.
+메모리의 주소값과 파라미터에 int형 인자를 할당한 결과 모두 동일한 값이 출력됨을 확인할 수 있다.
