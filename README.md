@@ -17,7 +17,7 @@
 </br>
 </br>
 
-## 💁🏻 Team Member
+## 💁🏻 Study Member
 |윤준|예슬|효주|석현|
 |------|---|---|---|
 |<a href="https://github.com/YoonJoony"><img src="https://github.com/YangYunSeok/Co-De/assets/110625854/d41777d4-f452-44ea-bae0-1b2f21996459" style="width:100px; height:100px;"></a>|<a href="https://github.com/kys0411"><img src="https://avatars.githubusercontent.com/u/62236238?v=4" style="width:100px; height:100px;"></a>|<a href="https://github.com/Leehyoju97"><img src="https://avatars.githubusercontent.com/u/83864280?v=4" style="width:100px; height:100px;"></a>|<a href="https://github.com/smuhsh"><img src="https://avatars.githubusercontent.com/u/49484645?v=4" style="width:100px; height:100px;"></a>|
