@@ -1,5 +1,7 @@
 ![singleton](https://github.com/smuhsh/DesignPattern/assets/49484645/2b692803-5b1d-4041-8814-df7463193246)
 
+#### 테스트
+
 ![singleton-3x](https://github.com/smuhsh/DesignPattern/assets/49484645/1bc74f84-3191-4bbe-84bb-a407a7968488)
 
 ```java
