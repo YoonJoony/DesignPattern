@@ -160,8 +160,11 @@ public class Client {
 ```
 
 ```
-ShipFactory 클래스를 추상클래스로 만든 후 Ship의 공통된 기능을 메소드로 만들고 Ship 인스턴스를 생성을 담당하는 createShip() 메소드를 추상메소드로 선언한 한 후 ShipFactory의 하위 클래스에서 ShipFactory 클래스를 상속받은 후 재정의를 통해 각 객체의 특성에 맞게 재정의를 합니다.
-이렇게 만들면 또 다른 Ship이 생길 경우 ShipFactory를 상속받은 후 재정의를 하면 되기 때문에 기존코드를 건들 필요가 없다는 장점이 있다.
+ShipFactory 클래스를 추상클래스로 만든 후 Ship의 공통된 기능을 메소드로 만들고 Ship 
+인스턴스를 생성을 담당하는 createShip() 메소드를 추상메소드로 선언한 한 후 ShipFactory의 
+하위 클래스에서 ShipFactory 클래스를 상속받은 후 재정의를 통해 각 객체의 특성에 맞게 재정의를 합니다.
+이렇게 만들면 또 다른 Ship이 생길 경우 ShipFactory를 상속받은 후 재정의를 하면 되기 
+때문에 기존코드를 건들 필요가 없다는 장점이 있습니다.
 ```
 
 ### 팩토리 메서드 패턴 특징
