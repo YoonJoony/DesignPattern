@@ -2,7 +2,7 @@
 
 가상 생성자
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/0db793ca-37d8-4de9-a7c8-a893788358ec/Untitled.png)
+![Untitled](https://github.com/YoonJoony/DesignPattern/assets/110625854/e7f12579-6f8f-443a-846b-1091084ba7f3)
 
 **팩토리 메소드 패턴**은 객체 생성을 공장(factory) 클래스로 캡슈로하 처리하여 대신 생성하게 하는 생성 디자인 패턴. 
 
@@ -32,7 +32,8 @@
 
 ### 팩토리 메서드 구조
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/38b4f6fa-ef17-4344-90a2-16cbbf643868/Untitled.png)
+
+![Untitled](https://github.com/YoonJoony/DesignPattern/assets/110625854/37a8fb40-aaa4-4cc9-adf5-0330c974cb9a)
 
 - Creator :  최상위 공장 클래스로서, 팩토리 메소드를 추상화하여 서브 클래스로 하여금 구현하도록 함.
 - ConcreteCreator : 각 서브 공장 클래스들은 이에 맞는 제품 객체를 반환하도록 생성 추상 메소드를 재정의 한다. 즉, 제품 객체 하나당 그에 걸맞는 생산 공장 객체가 위치된다.
@@ -47,15 +48,16 @@
 
 → 객체간의 결합도가 낮아지고 유지보수에 용이해짐.
 
-### 테스트 코드 : https://github.com/YoonJoony/DesignPattern/tree/master/day2/YoonJunny/fectoryMethodEx01
+### 테스트 코드 : ![코드](https://github.com/YoonJoony/DesignPattern/tree/master/day2/YoonJunny/fectoryMethodEx01)
 
 **테스트 코드의 실행 흐름**
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/d5c325dd-34a8-41dc-bc4f-e09c17cfe05b/Untitled.png)
+![Untitled](https://github.com/YoonJoony/DesignPattern/assets/110625854/7626f1d2-f98a-40be-9f56-f37a9c059dd5)
 
 - (사진) 자세한 흐름
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/941343c2-c7dd-4730-9eb7-9b39aaefc6d5/Untitled.png)
+    ![Untitled](https://github.com/YoonJoony/DesignPattern/assets/110625854/d70ea1ca-e32a-4112-b180-276f1c08192d)
+
     
 
 ## 팩토리 메서드 특징
