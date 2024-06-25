@@ -11,10 +11,18 @@
 # 왜? 어디에?
 
 ## 상황
+
+### ex 1) 네이게이션의 경로탐색
 ![strategy-comic-1-ko-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/e0db3fa4-32e6-4366-95c9-c09816bb39a2)
 
-ex) 만일 당신이 공항에 가야 하는 상황이다. 당신은 버스를 탈 수도 있고, 택시나 자전거를 탈 수도 있다. 이것들이 바로 당신의 운송 전략들이다.
+만일 당신이 공항에 가야 하는 상황이다. 당신은 버스를 탈 수도 있고, 택시나 자전거를 탈 수도 있다. 이것들이 바로 당신의 운송 전략들이다.
 전략패턴은 예산이나 시간 제약 등을 고려하여 이러한 전략 알고리즘 중 하나를 선택할 수 있다.
+
+### ex 2) 커피머신기 주문
+![스타벅스-‘사이렌-오더’-비회원도-서비스-가능](https://github.com/smuhsh/DesignPattern/assets/49484645/69962f9a-22dd-4420-80d2-950f78492a6e)
+
+당신은 커미머신기에서 카페라떼, 아이스라떼, 핫초코 등 여러가지 음료를 주문 할 수 있다.
+클라이언트에서 요청하는 여러 주문을 해결하기 위해 기호에 맞는 전략을 택할 수 있다.
 
 ## 해결
 ![solution-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/2a80028d-190c-4c1f-a93e-0ba35a92f3c3)
@@ -29,89 +37,139 @@ ex) 만일 당신이 공항에 가야 하는 상황이다. 당신은 버스를 �
 이렇게 하면 콘텍스트가 구상 전략들에 의존하지 않게 되므로 콘텍스트 또는 다른 전략들의 코드를 변경하지 않고도 새 알고리즘들을 추가하거나 기존 알고리즘들을 수정할 수 있다.
 
 # 특징
-메모리에 인스턴스 하나를 등록해 여러 쓰레드에서 동시에 하나의 객체를 사용할 수 있다.
-기본생성자를 private 접근제어자로 지정해서 직접 인스턴스를 생성할 수 없게하고, 사용자에게 인스턴스를 전달하는 static 메서드가 있다. static 이기 때문에 고정된 메모리 영역을 얻는다. 
-모든 클래스에서 사용할 수 있어서 공통된 객체를 다수의 클라이언트에서 사용해야하는 상황에서 주로 사용된다.
+## ※ 캡슐화 (알고리즘 코드가 노출되어서는 안 되는 데이터에 액세스 하거나 데이터를 활용할 때)
+
+같은 기능이지만 서로 다른 전략을 가진 클래스들을 각각 캡슐화 하여 상호교환 할 수 있도록 도와주는 패턴이다.
+객체의 행위를 변경하고 싶은 경우 직접 수정하지 않고 전략이라 불리는 캡슐화한 알고리즘을 변경해줌으로써
+유연하게 확장할 수 있다.
 
 # 장점
-① 리소스 관리 및 접근 제어 :
-싱글톤 패턴은 특정 자원이나 서비스에 대한 접근을 제어하는데 유용하다. 싱글톤은 한 번에 하나의 인스턴스만이 자원을 사용하도록 보장함으로써, 리소스의 과도한 사용을 방지할 수 있다.
+### 유지보수하기 좋다(컨텍스트 코드의 변경 없이 새로운 전략을 추가할 수 있다)
 
-② 메모리 효율성 :
-싱글톤은 필요한 시점에만 인스턴스를 생성하고, 이후에는 동일 인스턴스를 재사용한다.
-이는 메모리 사용을 줄이고 시스템의 전반적인 효율성을 높이는 데 도움 된다.
+예를 들어 새로운 전략인 중간 손님을 대폭할인하는 정책이 추가되었다고 가정하자. 그러면 아래와 같이 변할 것이다.
 
-③ 공유 상태의 일관성 :
-싱글톤 인스턴스는 애플리케이션에서 전역 상태를 유지한다. 이는 여러 컴포넌트 간에 상태를 공유하고 일관성을 유지하는 데 유용하다.
-
-④ 해당 인스턴스를 다른 모듈들이 공유하며 사용하기 때문에 인스턴스를 생성할 때 드는 
-비용이 줄어드는 장점이 있다.
+기존 코드 : else-if 문이 추가된다.
+전략패턴이 적용된 코드 : 새로운 클래스가 추가된다.
+즉, 요구사항이 변경되었을 때 기존의 코드를 변경하지 않아도 된다는 것이 전략패턴의 장점이며, 
+새로운 전략에 대해서는 새로운 클래스를 통해 관리하기 때문에 OCP의 원칙을 준수할 수 있는 패턴이다.
 
 # 단점
-① 동기화(여러곳에서 동시에 접근해서 생기는 문제)가 발생할 수 있어 잘 파악하고 설계해야된다.
+### ① 알고리즘이 많아질수록 관리해야할 객체의 수가 늘어난다.
+만일 어플리케이션 특성이 알고리즘이 많지 않고 자주 변경되지 않는다면, 새로운 클래스와 인터페이스를 만들어 프로그램을 복잡하게 만들 이유가 없다.
 
-② 싱글톤 객체는 객체지향적인 설계에서 문제가 발생할 수 있다.
-
-싱글톤 객체는 객체의 상태와 행위를 모두 정적(static)으로 구현하기 때문에, 객체지향적인 설계 원칙을 위반할 수 있다. 객체지향적인 설계에서는 객체의 상태와 행위를 캡슐화하여 응집도(cohesion)와 결합도(coupling)를 유지해야 한다. 테스트마다 ‘독립적인’ 인스턴스를 만들기가 어렵다. 이는 객체 지향 설계 원칙에 어긋난다.
+### ② 적합한 전략을 선택하기 위해 전략간의 차이점을 파악해야한다. (복잡도 증가)
 
 # 간단한 예제
 
 ```java
-package week01.day03.singleton01;
+package com.pattern.domain.strategy;
 
-public class Singleton extends Object {
-	
-	//인스턴스를 공유하기 위해서 static 변수로 선언한다
-	private static Singleton instance;
-	private int msg;
-	
-	//constructor
-	private Singleton(int msg) {
-		//private 이유: public 이면 외부에서 접근이 가능해서 생성자 호출을 차단한다
-		this.msg = msg;
-	}
+/*
+ * 작성일:2024-06-25
+ * 작성자:황석현
+ * 개요: 인터페이스 정의
+ * 		현금인출을 위한 카드사 계좌 기능
+ * 
+ * */
+public interface Account {
 
-	public static Singleton getInstance(int msg) {
-		if (instance == null) {
-			instance = new Singleton(msg);
-		}
-		return instance;
-	}
+	String account();
+
+}
+```
+
+```java
+package com.pattern.domain.strategy;
+
+public class AtmMachine {
 	
-	public void printMsg() {
-		System.out.println(msg);
+    public String account(Account account) {
+    	
+        return account.account();
+    }
+}
+```
+
+```java
+package com.pattern.domain.strategy;
+
+
+public class IbkStrategy implements Account {
+	
+    private static final String IBK = "기업은행";
+    
+    @Override
+    public String account() {
+        // IBK기업은행에서 인출하는 기능
+        return IBK;
+    }
+}
+```
+```java
+package com.pattern.domain.strategy;
+
+public class KbStrategy implements Account {
+
+	private static final String KB = "kb국민";
+	
+	@Override
+	public String account() {
+        // 카드를 사용하는 기능 
+        return KB;
+		
 	}
 
 }
 ```
 ```java
-package week01.day03.singleton01;
+package com.pattern.domain.strategy;
+
 /*
- * 작성일:2024-06-19
+ * 작성일:2024-06-25
  * 작성자:황석현
- * 개요: 싱글톤 패턴 연습
+ * 개요: 전략패턴
+ * 		카드를 통해 ATM기에서 현금을 인출한다
+ * 
  */
-
 public class Main {
-
-	public static void main(String[] args) {
-		Singleton instance1 = Singleton.getInstance(1);
-		Singleton instance2 = Singleton.getInstance(2);
-		
-		System.out.println(instance1.hashCode());
-		System.out.println(instance2.hashCode());
-		
-		instance1.printMsg();
-		instance2.printMsg();
-		
+	
+	//클라이언트가 현금인출기에서 계좌를 선택하는 전략
+	private static Account kbButton() {
+		return new KbStrategy();
 	}
+	
+	private static Account ibkButton() {
+		return new IbkStrategy();
+	}
+
+    public static void main(String[] args) {
+    	
+    	System.out.println("ATM 현금인출기 카드목록");
+    	
+    	//#1. 현금인출기 생성
+        AtmMachine atmMachine = new AtmMachine();
+        
+        //#2. KB국민은행 카드로 현금인출
+        String KB = atmMachine.account(kbButton());
+        System.out.println(atmMachine.account(kbButton()));
+        
+        //#3. IBK기업은행 카드로 현금인출
+        String ibk = atmMachine.account(ibkButton());
+        System.out.println(atmMachine.account(ibkButton()));
+
+    }
 
 }
 ```
-우선, 싱글톤은 외부에서 생성자를 차단하여 불필요한 메모리 사용을 방지한다.
-그래서 접근제어자를 public 이 아닌 private를 사용하여 new 인스턴스를 외부에서 사용할 수 없게 하였다.
+![ezgif-4-3a62d56600](https://github.com/smuhsh/DesignPattern/assets/49484645/6cf33201-94ea-4479-b88b-bac62f311cc2)
 
-![ezgif-6-abe5ed4bfe](https://github.com/smuhsh/DesignPattern/assets/49484645/017ba955-b4a0-485a-b1ab-cd26ae75a2f9)
+우선, 현금인출기에서 사용할 카드사의 '계좌를 선택한다' 라는 공통적인 기능을 Account 인터페이스에 정의했다. 그리고 이를 구현하기 위해 IBK, KB 전략 클래스를 정의하였다.
 
-그리고 싱글톤 객체의 인스턴스값을 호출하여도 결과는 같다.
-메모리의 주소값과 파라미터에 int형 인자를 할당한 결과 모두 동일한 값이 출력됨을 확인할 수 있다.
+![ezgif-4-8eb37c693f](https://github.com/smuhsh/DesignPattern/assets/49484645/361faef3-1ca3-415d-99d4-9816e1456c4a)
+
+![ezgif-4-a2e45d6a77](https://github.com/smuhsh/DesignPattern/assets/49484645/c1a28617-6ea9-461a-9753-185d84fadcbb)
+
+클라이언트가 ATM 으로 갔고 버튼을 누르는 행위를 하였다. 누르는 행위인 '버튼' 이벤트가 발생하면 전략을 다르게 부여하면 된다.
+전략패턴을 사용하면 현금인출을 아주 간결하게 구현할 수 있다.
+계좌 인터페이스를 받으면 클라이언트 쪽에서 주입하는 구현체에 따라서 전략이 결정되기 때문이다.
+
