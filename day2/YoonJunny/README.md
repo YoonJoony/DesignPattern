@@ -1,84 +1,83 @@
-## Map
+# Factory Method
 
-키와 값을 하나의 쌍으로 저장하는 방식
+가상 생성자
 
-요소를 순차적으로 저장하지 않고 key를 통해 value를 얻어옴.
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/0db793ca-37d8-4de9-a7c8-a893788358ec/Untitled.png)
 
-- key : 중복을 허용 X
-- value : 중복을 허용 O
+**팩토리 메소드 패턴**은 객체 생성을 공장(factory) 클래스로 캡슈로하 처리하여 대신 생성하게 하는 생성 디자인 패턴. 
 
-### HashMap
+### 만약.
 
-Map 중 가장 간단한 HashMap 방식
+내가 물류 관리 앱을 개발하고 있다고 가정.
 
-- Map 기능
+앱의 첫 버전은 트럭 운송만 처리할 수 있어서 대부분의 코드가 Truck 클래스에 있음
+
+그런데 얼마 뒤 나의 앱이 유명해져서 매일 물류 회사들로부터 물류 기능을 앱에 추가해 달라는 요청을 받음
+
+그러나 대부분의 코드가 Truck 클래스에 결합되어 있다.
+
+앱에 Ship(선박) 코드를 추가하려면 전체 코드 베이스를 변경해야함.
+
+결과적으로 많은 운송수단 클래스가 추가되면 이를 조건문에 따라 수 많은 분기로 나눌 시 매우 복잡한 코드가 되어버림.
+
+---
+
+### 해결책
+
+기존 코드를 수정하지 않고, 클라이언트에서 직접 `new` 연산자를 통해 제품 객체를 생성하는 것이 아닌,
+
+**제품 객체들을 도맡아 생성하는** 공장 클래스를 만들고, 
+
+**이를 상속하는 여러 서브 공장 클래스**의 메소드에 제품 생성을 책임지게 한다.
+
+### 팩토리 메서드 구조
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/38b4f6fa-ef17-4344-90a2-16cbbf643868/Untitled.png)
+
+- Creator :  최상위 공장 클래스로서, 팩토리 메소드를 추상화하여 서브 클래스로 하여금 구현하도록 함.
+- ConcreteCreator : 각 서브 공장 클래스들은 이에 맞는 제품 객체를 반환하도록 생성 추상 메소드를 재정의 한다. 즉, 제품 객체 하나당 그에 걸맞는 생산 공장 객체가 위치된다.
+- Product : 제품 구현체를 추상화
+- ConcreteProduct : 제품 구현체
+
+### 정리하면
+
+팩메 패턴은 객체를 만들어내는 공장을 만드는 패턴이라고 보면 된다.
+
+그리고 어떤 클래스의 인스턴스를 만들지는 미리 정의한 공장 서브 클래스에서 결정.
+
+→ 객체간의 결합도가 낮아지고 유지보수에 용이해짐.
+
+### 테스트 코드 : https://github.com/YoonJoony/DesignPattern/tree/master/day2/YoonJunny/fectoryMethodEx01
+
+**테스트 코드의 실행 흐름**
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/d5c325dd-34a8-41dc-bc4f-e09c17cfe05b/Untitled.png)
+
+- (사진) 자세한 흐름
     
-    `put(key, value)` : Map 객체 값 추가
-    
-    ```java
-    HashMap<String, String> map = new HashMap<>();
-    map.put("people", "사람");
-    map.put("baseball", "야구");
-    
-    ```
-    
-    `get(key)` : Map 객체 값 조회
-    
-    ```java
-    System.out.println(map.get("people"));
-    ```
-    
-    `containsKey(key)` : Map 에 해당하는 키가 있는지 boolean 타입으로 조회
-    
-    ```java
-    System.out.println(map.containsKey("people"));
-    ```
-    
-    `remove(key)` : key에 해당하는 아이템(key, value)을 삭제
-    
-    ```java
-    map.remove("people");
-    ```
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/3b0c6359-4e92-46b6-8f38-79c9d2422eaa/941343c2-c7dd-4730-9eb7-9b39aaefc6d5/Untitled.png)
     
 
-## Lambda
+## 팩토리 메서드 특징
 
-**익명 클래스로 구현한 메소드를 람다식으로 줄이기**
+### 패턴 사용 시기
 
-```java
-interface A {
-	void abc();
-}
+- 클래스 생성과 사용의 처리 로직을 분리하여 결합도를 낮추고자 할 때
+- 코드가 동작해야 하는 객체의 유형과 종속성을 캡슐화를 통해 정보 은닉 처리 할 경우
+- 라이브러리 혹은 프레임워크 사용자에게 구성요소를 확장하는 방법을 제공하려는 경우
+- 기존 객체를 재구성하는 대신 기존 객체를 재사용하여 리소스를 절약하고자 하는 경우
+    - 상황에 따라 객체를 생성하는 코드는 중복될 수 있다. 그리고 객체 생성 방식의 변화는 해당되는 모든 코드 부분을 변경해야 하는 문제 발생
+    - 따라서 객체의 생성 코드를 별도의 클래스/메서드로 분리 함으로써 객체 생성의 변화에 대해 대비를 하기 위해 팩토리 메소드 패턴을 이용한다고 본다.
+    - 특정 기능의 구현은 별개의 클래스로 제공되는 것이 바람직한 설계이기 때문
 
-public class OOPvsFP {
-	public static void main(String[] args) {
-		// 2. 객체지향 프로그래밍 문법 2(case2) : 익명 이너 클래스
-		A a2 = new A() {
-			@Override
-			public void abc() {
-				System.out.println("메서드 내용 2");
-			};
-		};
-		a2.abc();
-		
-		// 3. 함수적 프로그래밍 문법 (람다식)
-		A a3 = () -> {System.out.println("메서드 내용 3");};
-		a3.abc();
-	}
-}
-```
+### 장점
 
-**매개변수가 존재하는 람다식**
+- 생성자와 구현 객체의 강한 결합을 피할 수 있다.
+- 객체의 생성 후 공통으로 할 일을 수행하도록 지정해줄 수 있다.
+- 캡슐화, 추상화를 통해 생성되는 객체의 구체적인 타입을 감출 수 있다.
+- 단일 책임 원칙, 개방/폐쇄 원칙 준수
 
-```java
-interface A {
-	void abc(int a);
-}
+### 단점
 
-public class FunctionToLambdaExpression {
-	public static void main(String[] args) {
-		A a1 = (a) -> {System.out.println("람다 : " + a);};
-		a1.abc(39);
-	}
-}
-```
+- 각 제품 구현체마다 팩토리 객체들을 모두 구현해주어야 하기 때문에, 구현체가 늘어날때 마다 팩토리 클래스가 증가하여 서브 클래스 수가 폭발한다.
+- 코드의 복잡성 증가
