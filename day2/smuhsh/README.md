@@ -165,6 +165,8 @@ public class Main {
 
 }
 ```
+![ezgif-4-3a62d56600](https://github.com/smuhsh/DesignPattern/assets/49484645/6cf33201-94ea-4479-b88b-bac62f311cc2)
+![ezgif-4-8eb37c693f](https://github.com/smuhsh/DesignPattern/assets/49484645/361faef3-1ca3-415d-99d4-9816e1456c4a)
 
 
 우선, 싱글톤은 외부에서 생성자를 차단하여 불필요한 메모리 사용을 방지한다.
