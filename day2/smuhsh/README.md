@@ -66,57 +66,107 @@
 # 간단한 예제
 
 ```java
-package week01.day03.singleton01;
+package com.pattern.domain.strategy;
 
-public class Singleton extends Object {
-	
-	//인스턴스를 공유하기 위해서 static 변수로 선언한다
-	private static Singleton instance;
-	private int msg;
-	
-	//constructor
-	private Singleton(int msg) {
-		//private 이유: public 이면 외부에서 접근이 가능해서 생성자 호출을 차단한다
-		this.msg = msg;
-	}
+/*
+ * 작성일:2024-06-25
+ * 작성자:황석현
+ * 개요: 인터페이스 정의
+ * 		현금인출을 위한 카드사 계좌 기능
+ * 
+ * */
+public interface Account {
 
-	public static Singleton getInstance(int msg) {
-		if (instance == null) {
-			instance = new Singleton(msg);
-		}
-		return instance;
-	}
+	String account();
+
+}
+```
+
+```java
+package com.pattern.domain.strategy;
+
+public class AtmMachine {
 	
-	public void printMsg() {
-		System.out.println(msg);
+    public String account(Account account) {
+    	
+        return account.account();
+    }
+}
+```
+
+```java
+package com.pattern.domain.strategy;
+
+
+public class IbkStrategy implements Account {
+	
+    private static final String IBK = "기업은행";
+    
+    @Override
+    public String account() {
+        // IBK기업은행에서 인출하는 기능
+        return IBK;
+    }
+}
+```
+```java
+package com.pattern.domain.strategy;
+
+public class KbStrategy implements Account {
+
+	private static final String KB = "kb국민";
+	
+	@Override
+	public String account() {
+        // 카드를 사용하는 기능 
+        return KB;
+		
 	}
 
 }
 ```
 ```java
-package week01.day03.singleton01;
+package com.pattern.domain.strategy;
+
 /*
- * 작성일:2024-06-19
+ * 작성일:2024-06-25
  * 작성자:황석현
- * 개요: 싱글톤 패턴 연습
+ * 개요: 전략패턴
+ * 		카드를 통해 ATM기에서 현금을 인출한다
+ * 
  */
-
 public class Main {
-
-	public static void main(String[] args) {
-		Singleton instance1 = Singleton.getInstance(1);
-		Singleton instance2 = Singleton.getInstance(2);
-		
-		System.out.println(instance1.hashCode());
-		System.out.println(instance2.hashCode());
-		
-		instance1.printMsg();
-		instance2.printMsg();
-		
+	
+	//클라이언트가 현금인출기에서 계좌를 선택하는 전략
+	private static Account kbButton() {
+		return new KbStrategy();
 	}
+	
+	private static Account ibkButton() {
+		return new IbkStrategy();
+	}
+
+    public static void main(String[] args) {
+    	
+    	System.out.println("ATM 현금인출기 카드목록");
+    	
+    	//#1. 현금인출기 생성
+        AtmMachine atmMachine = new AtmMachine();
+        
+        //#2. KB국민은행 카드로 현금인출
+        String KB = atmMachine.account(kbButton());
+        System.out.println(atmMachine.account(kbButton()));
+        
+        //#3. IBK기업은행 카드로 현금인출
+        String ibk = atmMachine.account(ibkButton());
+        System.out.println(atmMachine.account(ibkButton()));
+
+    }
 
 }
 ```
+
+
 우선, 싱글톤은 외부에서 생성자를 차단하여 불필요한 메모리 사용을 방지한다.
 그래서 접근제어자를 public 이 아닌 private를 사용하여 new 인스턴스를 외부에서 사용할 수 없게 하였다.
 
