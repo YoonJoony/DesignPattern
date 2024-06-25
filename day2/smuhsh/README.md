@@ -166,13 +166,12 @@ public class Main {
 }
 ```
 ![ezgif-4-3a62d56600](https://github.com/smuhsh/DesignPattern/assets/49484645/6cf33201-94ea-4479-b88b-bac62f311cc2)
+
+우선, 현금인출기에서 사용할 카드사의 '계좌를 선택한다' 라는 공통적인 기능을 Account 인터페이스에 정의했다. 그리고 이를 구현하기 위해 IBK, KB 전략 클래스를 정의하였다.
+
 ![ezgif-4-8eb37c693f](https://github.com/smuhsh/DesignPattern/assets/49484645/361faef3-1ca3-415d-99d4-9816e1456c4a)
 
+클라이언트가 ATM 으로 갔고 버튼을 누르는 행위를 하였다. 누르는 행위인 '버튼' 이벤트가 발생하면 전략을 다르게 부여하면 된다.
+전략패턴을 사용하면 현금인출을 아주 간결하게 구현할 수 있다.
+계좌 인터페이스를 받으면 클라이언트 쪽에서 주입하는 구현체에 따라서 전략이 결정되기 때문이다.
 
-우선, 싱글톤은 외부에서 생성자를 차단하여 불필요한 메모리 사용을 방지한다.
-그래서 접근제어자를 public 이 아닌 private를 사용하여 new 인스턴스를 외부에서 사용할 수 없게 하였다.
-
-![ezgif-6-abe5ed4bfe](https://github.com/smuhsh/DesignPattern/assets/49484645/017ba955-b4a0-485a-b1ab-cd26ae75a2f9)
-
-그리고 싱글톤 객체의 인스턴스값을 호출하여도 결과는 같다.
-메모리의 주소값과 파라미터에 int형 인자를 할당한 결과 모두 동일한 값이 출력됨을 확인할 수 있다.
