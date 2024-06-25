@@ -1,5 +1,5 @@
 # 전략패턴
-![fcd8a103058a44958a116ac03fc3bffe](https://github.com/smuhsh/DesignPattern/assets/49484645/095db2f9-41d5-4a4a-9851-90b658996502)
+![strategy-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/5be09a5a-a2e9-4e02-8f34-9a5eaf2c6986)
 
 # 정의
 실행(런타임) 중 알고리즘 전략을 선택하여 객체 동작을 실시간으로 바뀌도록 할 수 있게 하는 행위 디자인 패턴이다.
@@ -9,7 +9,7 @@
 
 
 # 왜? 어디에?
-![singleton-3x](https://github.com/smuhsh/DesignPattern/assets/49484645/1bc74f84-3191-4bbe-84bb-a407a7968488)
+![solution-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/2a80028d-190c-4c1f-a93e-0ba35a92f3c3)
 
 ex) 사무실에 여러 명의 사람이 프린터를 사용한다. 프린터를 사용하려는 사람들이 프린터를 각자 생성해서 사용하는 것은 불가능하고 1대만 존재하는 프린터를 여러 사람이 함께 공유하며 사용해야 한다. 이러한 상황은 현실에서도 존재하지만, 실제 구현하는 프로그램 안에서도 존재할 수 있다.
 
