@@ -9,11 +9,14 @@
 
 
 # 왜? 어디에?
+
+## 상황
 ![strategy-comic-1-ko-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/e0db3fa4-32e6-4366-95c9-c09816bb39a2)
 
 ex) 만일 당신이 공항에 가야 하는 상황이다. 당신은 버스를 탈 수도 있고, 택시나 자전거를 탈 수도 있다. 이것들이 바로 당신의 운송 전략들이다.
 전략패턴은 예산이나 시간 제약 등을 고려하여 이러한 전략 알고리즘 중 하나를 선택할 수 있다.
 
+## 해결
 ![solution-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/2a80028d-190c-4c1f-a93e-0ba35a92f3c3)
 
 전략 패턴은 특정 작업을 다양한 방식으로 수행하는 클래스를 선택한 후 모든 알고리즘을 전략들(strategies)​이라는 별도의 클래스들로 추출할 것을 제안한다.
