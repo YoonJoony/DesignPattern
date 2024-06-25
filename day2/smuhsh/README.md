@@ -9,12 +9,13 @@
 
 
 # 왜? 어디에?
-![solution-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/2a80028d-190c-4c1f-a93e-0ba35a92f3c3)
+![strategy-comic-1-ko-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/e0db3fa4-32e6-4366-95c9-c09816bb39a2)
 
 ex) 사무실에 여러 명의 사람이 프린터를 사용한다. 프린터를 사용하려는 사람들이 프린터를 각자 생성해서 사용하는 것은 불가능하고 1대만 존재하는 프린터를 여러 사람이 함께 공유하며 사용해야 한다. 이러한 상황은 현실에서도 존재하지만, 실제 구현하는 프로그램 안에서도 존재할 수 있다.
 
 프로그램 내에서 단 1개만 존재해야 하는 객체가 있으며 이를 프로그램 내부의 여러 부분에서 호출하여 사용하는 경우이다. 
 보통 공통된 객체를 여러 개 생성해서 사용하는 데이터베이스 연결 모듈에 싱글톤 패턴이 많이 사용한다.
+![solution-2x](https://github.com/smuhsh/DesignPattern/assets/49484645/2a80028d-190c-4c1f-a93e-0ba35a92f3c3)
 
 # 특징
 메모리에 인스턴스 하나를 등록해 여러 쓰레드에서 동시에 하나의 객체를 사용할 수 있다.
