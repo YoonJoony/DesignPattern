@@ -1,5 +1,5 @@
 # 전략패턴
-![singleton](https://github.com/smuhsh/DesignPattern/assets/49484645/2b692803-5b1d-4041-8814-df7463193246)
+![fcd8a103058a44958a116ac03fc3bffe](https://github.com/smuhsh/DesignPattern/assets/49484645/095db2f9-41d5-4a4a-9851-90b658996502)
 
 # 정의
 실행(런타임) 중 알고리즘 전략을 선택하여 객체 동작을 실시간으로 바뀌도록 할 수 있게 하는 행위 디자인 패턴이다.
