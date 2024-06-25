@@ -171,6 +171,8 @@ public class Main {
 
 ![ezgif-4-8eb37c693f](https://github.com/smuhsh/DesignPattern/assets/49484645/361faef3-1ca3-415d-99d4-9816e1456c4a)
 
+![ezgif-4-a2e45d6a77](https://github.com/smuhsh/DesignPattern/assets/49484645/c1a28617-6ea9-461a-9753-185d84fadcbb)
+
 클라이언트가 ATM 으로 갔고 버튼을 누르는 행위를 하였다. 누르는 행위인 '버튼' 이벤트가 발생하면 전략을 다르게 부여하면 된다.
 전략패턴을 사용하면 현금인출을 아주 간결하게 구현할 수 있다.
 계좌 인터페이스를 받으면 클라이언트 쪽에서 주입하는 구현체에 따라서 전략이 결정되기 때문이다.
