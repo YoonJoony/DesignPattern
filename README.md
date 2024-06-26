@@ -11,9 +11,9 @@
 ### 학습 내용
 | 주차 | 패턴 1 | 패턴 2 |  발표자  |
 | ---- | ---- | ---- | ---- |
-| 1주차 | [싱글톤 패턴](https://github.com/YoonJoony/DesignPattern/tree/master/day1/smuhsh) | 템플릿 메소드 | 김예슬, 황석현  |
-| 2주차 |   |   | ,   |
-| 3주차 |   |   | ,   |
+| 1주차 | [싱글톤 패턴](https://github.com/YoonJoony/DesignPattern/tree/master/day1/smuhsh) | [템플릿 메소드 패턴](https://github.com/YoonJoony/DesignPattern/tree/master/day1/Leehyoju97) | 김예슬, 황석현  |
+| 2주차 | [전략 패턴](https://github.com/YoonJoony/DesignPattern/tree/master/day2/smuhsh) | [팩토리 메소드 패턴](https://github.com/YoonJoony/DesignPattern/tree/master/day2/YoonJunny) | 황석현, 이효주 |
+| 3주차 | 빌더 패턴 | 퍼사드 패턴 | , |
 </br>
 </br>
 
